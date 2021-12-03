@@ -1,13 +1,15 @@
 const mysql = require('mysql');
 
 // Connection
-const pool = mysql.createPool({
+let config = {
   connectionLimit: 10,
   host: 'mydb.tamk.fi',
   user: process.env.user,
   password: process.env.password,
   database: process.env.database,
-});
+};
+
+var pool = mysql.createPool(config);
 
 // Validator
 var Validator = require('jsonschema').Validator;
